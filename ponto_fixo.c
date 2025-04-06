@@ -10,7 +10,7 @@ EXERCÍCIO   -   EXERCÍCIO-PROGRAMA 1: Equações não lineares em uma variáve
 
 const double e = M_E;    // definição do número de euler
 
-double h(int x){
+double h(double x){
     /*
     ENTRADA:
         double x:   abcissa em que será calculada h(x)
@@ -39,15 +39,15 @@ double g(double x){
     */
     
     if (x > 2){
-        return log(pow(2*x, 2));
+        return log(2*pow(x, 2));
     }
 
     else if (x < 0){
-        return -sqrt((pow(e,x))/2);
+        return -sqrt(pow(e,x)/2);
     }
 
     else{
-        return sqrt((pow(e,x))/2);
+        return sqrt(pow(e,x)/2);
         }
     }
 
@@ -65,25 +65,21 @@ void ponto_fixo(double x0, double epsilon){
     g(x) e h(x)
     */
 
-    double alpha = g(x0);        // valor de g na abcissa x0 dada
-    double xk1 = h(x0);          // ponto x_{k+1} da iteração atual
-    double xk;                   // ponto x_{k} da iteração anterior
-
-    double beta;                 // valor auxiliar da iteração
-
+    double xk1;         // ponto x_{k} da iteração atual
+    double xk = x0;     // ponto x_{k} da iteração anterior
 
     ///// loop principal do método /////
     while (1){
-        if (abs(xk1-xk) <= epsilon){
-            printf("\nA raiz aproximada é: %lf \nCom epsilon == %lf\n", xk1, epsilon);
+        
+        xk1 = g(xk);
+        
+        if (fabs(xk1-xk) <= epsilon){
+            printf("\nUma raiz aproximada é: x == %lf \nCom epsilon == %lf e x0 == %lf \n", xk1, epsilon, x0);
+
             return;
         }
 
-        xk = xk1;
-
-        beta = g(alpha);
-        xk1 = h(beta);
-        alpha = g(xk1);
+        xk = xk1;        
     }
 }
 
@@ -91,11 +87,17 @@ void ponto_fixo(double x0, double epsilon){
 int main(){
     
     double x0;           // abcissa inicial x_{0}
-    double epsilon;      // erro tolerável para aproximar f(x) = 0
+    double epsilon = 1e-6;      // erro tolerável para aproximar f(x) = 0
 
-    printf("Insira uma abcissa x0 onde deseja que o algoritmo comece: ");
+    /// x0's para aproximar as três raízes de f(x) ///
+    ponto_fixo(-1.5, epsilon);
+    ponto_fixo(1.0, epsilon);
+    ponto_fixo(3.0, epsilon);
+
+
+    printf("\nInsira uma abcissa x0 onde deseja que o algoritmo comece: ");
     scanf("%lf", &x0);
-    printf("Insira um valor de erro tolerável para aproximar f(x) = 0: ");
+    printf("\nInsira um valor de erro tolerável para aproximar f(x) = 0: ");
     scanf("%lf", &epsilon);
 
     ponto_fixo(x0, epsilon);
