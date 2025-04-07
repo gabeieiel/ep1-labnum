@@ -113,7 +113,7 @@ void newton_basins(double l[2], double u[2], double p[2], double epsilon){
     }
 
     /// ARQUIVO ///
-    FILE *fp = fopen("output.txt", "w");    // cria o arquivo output.txt em modo de escrita
+    FILE *fp = fopen("output.dat", "w");    // cria o arquivo output.txt em modo de escrita
 
     if (fp == NULL){
         perror("Erro ao abrir o arquivo");
@@ -126,9 +126,10 @@ void newton_basins(double l[2], double u[2], double p[2], double epsilon){
     double passo_y = fabs(u[0] - u[1])/p[1]; 
 
     /// LOOP PARA PERCORRER CADA PIXEL DA IMAGEM ///
+    
     for (double i = 0; i < p[0]; i++){
         for(double j = 0; j < p[1]; j++){
-            
+
             double x = l[0] + i*passo_x;        // parte real do pixel
             double y = l[1] + j*passo_y;        // parte complexa do pixel
             
@@ -139,7 +140,7 @@ void newton_basins(double l[2], double u[2], double p[2], double epsilon){
             int indice = associa_raiz(raiz_aprox, raizes, 5, epsilon);
 
 
-            fprintf(fp, "%d", indice);
+            fprintf(fp, "%d ", indice);
         }
 
         fprintf(fp, "\n");
@@ -163,8 +164,8 @@ int main(){
     */
 
     /// PLANO [l1,u1]x[l2,u2]
-    double l[2] = {-2.0,2.0};       // intervalo [l1,u1]
-    double u[2] = {-2.0,2.0};       // intervalo [l2,u2]
+    double l[2] = {0.0,5.0};       // intervalo [l1,u1]
+    double u[2] = {0.0,5.0};       // intervalo [l2,u2]
         
     double p[2] = {1000.0,1000.0};  // tamanho da imagem
 
