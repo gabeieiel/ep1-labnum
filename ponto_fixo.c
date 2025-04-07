@@ -10,19 +10,6 @@ EXERCÍCIO   -   EXERCÍCIO-PROGRAMA 1: Equações não lineares em uma variáve
 
 const double e = M_E;    // definição do número de euler
 
-double h(double x){
-    /*
-    ENTRADA:
-        double x:   abcissa em que será calculada h(x)
-    
-    SAÍDA:
-        double x:   resultado de h(x)
-
-    função que retorna a função h(x) = x
-    */
-
-    return x;
-}
 
 double g(double x){
     /*

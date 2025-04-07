@@ -153,15 +153,6 @@ void newton_basins(double l[2], double u[2], double p[2], double epsilon){
 int main(){
 
     double epsilon = 1e-6;
-    
-    /*
-    /// APROXIMAÇÃO DAS 5 RAIZES ///
-    metodo_newton_raphson(1.0 + 0.0*I, epsilon);
-    metodo_newton_raphson(0.0 + 1.0*I, epsilon);
-    metodo_newton_raphson(1.0 - 1.0*I, epsilon);
-    metodo_newton_raphson(0.0 - 1.0*I, epsilon);
-    metodo_newton_raphson(0.5 + 0.5*I, epsilon);
-    */
 
     /// PLANO [l1,u1]x[l2,u2]
     double l[2] = {0.0,5.0};       // intervalo [l1,u1]
