@@ -8,7 +8,6 @@ EXERCÍCIO   -   EXERCÍCIO-PROGRAMA 1: Equações não lineares em uma variáve
 #include <stdlib.h>
 #include <math.h>
 #include <complex.h>
-#include <time.h>
 
 double complex evalf(double complex z){
     /*
